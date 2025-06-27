@@ -1,0 +1,321 @@
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+body {
+    background-color: #ebf7f8;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+
+    background-color: #d0e0eb;
+    padding: 3rem;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    align-items: center;
+
+
+}
+
+input, button {
+    display: block;
+    width: 95%;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #caff42;
+}
+
+button {
+    background-color: #49708a;
+    color: white;
+    transition: 0.5s;
+    border: 2px solid transparent;
+}
+
+button:hover {
+    border: 2px solid #caff42;
+    box-shadow: 0 0 10px #caff42;
+    cursor: pointer;
+}
+
+header {
+    background-color: #d0e0eb;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;  /* <- asegura que no se salga horizontalmente */
+    overflow-x: hidden; /* <- oculta cualquier desbordamiento */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-bottom: 2px solid #88abc2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+a{
+    text-decoration: none;
+    color: #0066cc;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #49708a;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #49708a;
+    text-shadow: 0 0 3px #88abc2;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #49708a;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+
+
+.profile-container {
+    max-width: 800px;
+    margin: 120px auto 40px;
+    background: #d0e0eb;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    background: #ccc;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #49708a;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.edit-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #49708a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #35586c;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1rem auto;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.container-login {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px 25px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.container-login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container-login label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.container-login input[type="text"],
+.container-login input[type="password"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.container-login input[type="text"]:focus,
+.container-login input[type="password"]:focus {
+    border-color: #0066cc;
+    outline: none;
+}
+
+.container-login button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container-login button:hover {
+    background-color: #004999;
+}
+
+.container-login .error {
+    color: #d93025;
+    background-color: #fce8e6;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.container-login p {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.container-login a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.container-login a:hover {
+    text-decoration: underline;
+}
+
+.not-found-container {
+    background-color: #d0e0eb;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 120px auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.not-found-container h1 {
+    font-size: 4rem;
+    color: #49708a;
+    margin-bottom: 0.5rem;
+}
+
+.not-found-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.not-found-container .emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.not-found-container a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #49708a;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.not-found-container a:hover {
+    border: 2px solid #caff42;
+    box-shadow: 0 0 10px #caff42;
+}
+
+.alert {
+    padding: 1rem;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}

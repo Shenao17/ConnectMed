@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ConnectMed - Mi Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>ConnectMed</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-pic">
+            <img src="{{ url_for('static', filename='profile_pics/' + (profile_picture if profile_picture else 'default.png')) }}"
+                 alt="Foto"
+                 width="120"
+                 height="120"
+                 style="border-radius: 50%;">
+        </div>
+        <div class="profile-info">
+            <h2>{{ first_name }} {{ last_name }}</h2>
+            <p>{{ email }}</p>
+        </div>
+    </div>
+    <div class="profile-details">
+        <p><strong>Usuario:</strong> {{ username }}</p>
+        <p><strong>Edad:</strong> {{ age }} años</p>
+        <p><strong>Género:</strong> {{ gender }}</p>
+    </div>
+    <a href="{{ url_for('editar_info') }}">
+        <button class="edit-btn">Editar Perfil</button>
+    </a>
+</div>
+
+</body>
+</html>

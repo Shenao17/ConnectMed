@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Editar Perfil</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Mi Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <h2 style="text-align: center; margin-bottom: 1rem;">Editar Perfil</h2>
+
+        {% if error %}
+            <p style="color: red; text-align: center;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" class="edit-form">
+            <input type="text" name="nombre" placeholder="Nombre" value="{{ perfil[0] or '' }}" required>
+            <input type="text" name="apellido" placeholder="Apellido" value="{{ perfil[1] or '' }}" required>
+            <input type="date" name="fecha_nacimiento" value="{{ perfil[2] or '' }}" required>
+
+            <select name="genero" required>
+                <option value="M" {% if perfil[3] == 'M' %}selected{% endif %}>Masculino</option>
+                <option value="F" {% if perfil[3] == 'F' %}selected{% endif %}>Femenino</option>
+                <option value="O" {% if perfil[3] == 'O' %}selected{% endif %}>Otro</option>
+            </select>
+
+            <label style="margin-top: 1rem;">Foto de perfil actual:</label>
+            {% if perfil[4] %}
+                <img id="preview" src="{{ url_for('static', filename='profile_pics/' + perfil[4]) }}" alt="Foto de perfil" class="profile-pic">
+            {% else %}
+                <img id="preview" src="{{ url_for('static', filename='profile_pics/default.png') }}" alt="Sin imagen" class="profile-pic">
+            {% endif %}
+
+            <label style="margin-top: 1rem;">Subir nueva foto</label>
+            <input type="file" name="foto_perfil" id="foto_perfil" accept="image/*">
+
+            <button type="submit" class="edit-btn">Guardar cambios</button>
+        </form>
+    </div>
+
+    <script>
+        const input = document.getElementById('foto_perfil');
+        const preview = document.getElementById('preview');
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.setAttribute('src', e.target.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

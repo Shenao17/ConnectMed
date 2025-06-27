@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ConnectMed - Información Adicional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function calcularEdad() {
+            const fechaNac = new Date(document.getElementById("fecha_nacimiento").value);
+            const hoy = new Date();
+            let edad = hoy.getFullYear() - fechaNac.getFullYear();
+            const m = hoy.getMonth() - fechaNac.getMonth();
+
+            if (m < 0 || (m === 0 && hoy.getDate() < fechaNac.getDate())) {
+                edad--;
+            }
+
+            document.getElementById("edad").innerText = `Edad estimada: ${edad} años`;
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>ConnectMed</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/login">Ingreso</a></li>
+            <li><a href="/about">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<form method="POST" style="margin-top: 7rem;">
+    <form method="POST" style="margin-top: 7rem;">
+    {% if mensaje_incompleto %}
+        <div class="alert alert-warning">
+            Por favor completa tu información de perfil para continuar.
+        </div>
+    {% endif %}
+
+    <h2>Información Adicional</h2>
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="apellido" placeholder="Apellido" required>
+
+    <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required onchange="calcularEdad()">
+    <p id="edad">Edad estimada: </p>
+
+    <label for="genero">Género:</label>
+    <select id="genero" name="genero" required>
+        <option value="">Seleccione una opción</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+        <option value="prefiero_no_decirlo">Prefiero no decirlo</option>
+    </select>
+
+    <label>
+        <input type="checkbox" name="terminos" required>
+        Acepto los <a href="/terminos" target="_blank">Términos y Condiciones</a>
+    </label>
+
+    <button type="submit">Continuar</button>
+</form>
+
+<script>
+    setTimeout(() => {
+        const alert = document.querySelector(".alert");
+        if (alert) alert.style.display = "none";
+    }, 10000); // desaparece después de 5 segundos
+</script>
+
+</body>
+</html>
